@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<form>
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title">
+
+    <label for="description">Description</label>
+    <textarea id="description" name="description"></textarea>
+    <label for="importance">Importance</label>
+    <div id="importance" name="importance" class="rating-system2">
+        <input type="radio" name='rate2' id="star5_2" class="hiddeninput" />
+        <label for="star5_2"></label>
+        <input type="radio" name='rate2' id="star4_2" class="hiddeninput"/>
+        <label for="star4_2"></label>
+        <input type="radio" name='rate2' id="star3_2" class="hiddeninput"/>
+        <label for="star3_2"></label>
+        <input type="radio" name='rate2' id="star2_2" class="hiddeninput"/>
+        <label for="star2_2"></label>
+        <input type="radio" name='rate2' id="star1_2" class="hiddeninput"/>
+        <label for="star1_2"></label>
+    </div>
+
+    <label for="dateDue">Date due</label>
+    <input type="date" id="dateDue" name="dateDue">
+
+    <div>
+        <button type="submit">Senden</button>
+        <button type="submit">Zurcksetzen</button>
+    </div>
+
+
+</form>
+</body>
+</html>
