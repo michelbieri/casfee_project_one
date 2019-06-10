@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Note pro</title>
-    <link rel="stylesheet" type="text/css" href="css/index.css">
-
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 </head>
 <body>
 <div class="container">
     <article>
-        <header class="header">Note pro
+        <header class="grid header">
             <button type="button">Create new note</button>
             <div></div>
             <select name="theme">
@@ -18,7 +18,7 @@
             </select>
         </header>
 
-        <section class="section">
+        <section class="grid section">
             <button class="active">By finished date</button>
             <button>By created date</button>
             <button>By importance</button>
@@ -26,15 +26,15 @@
             <button>Show finished</button>
         </section>
 
-        <div id="tasks" class="content"></div>
+        <div id="task-container" class="grid content"></div>
         <script id="entry-template" type="text/x-handlebars-template">
-            {{#each this}}
+            {{#each task}}
             <div class="taskitem">
                 <div class="due">
                     {{dateDue}}
-                    <div>
-                        <input type="checkbox" id="finished"  {{checkedIf this.finished}}/>
-                        <label for="finished">Finished</label>
+                    <div class="finished">
+                        <input type="checkbox" id="finished_{{this.id}}"  {{checkedIf this.finished}}/>
+                        <label for="finished_{{this.id}}">Finished</label>
                     </div>
                 </div>
                 <div class="title">
@@ -61,14 +61,12 @@
             </div>
             {{/each}}
         </script>
-
-        <div class="footer">Footer</div>
+        <div class="grid footer">Footer</div>
     </article>
 </div>
 
-<script src="js/handlebars-v4.1.2.js"></script>
-<script src="js/helpers.js"></script>
-<script src="js/task.js"></script>
-<script src="js/app.js"></script>
+<script src="scripts/handlebars-v4.1.2.js"></script>
+<script src="scripts/helpers.js"></script>
+<script src="scripts/bootstrapper.js" type="module" defer></script>
 </body>
 </html>
