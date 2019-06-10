@@ -1,32 +1,45 @@
+
 .container {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto 1fr auto 1fr;
     grid-template-areas: "header" "section" "content" "footer";
+    grid-column-gap: 10px;
+    grid-row-gap: 15px;
+    border-radius: 4px;
+    margin: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
 }
 
-.header { grid-area: header; background-color: #16b9ff;
+.grid {
+    padding: 15px;
+    font-size: 1rem;
+}
+
+.header { grid-area: header;
     display: grid;
-    grid-template-columns: auto auto 1fr auto;
+    grid-template-columns: auto 1fr auto;
 }
 
-.section { grid-area: section; background-color: #22398b;
+.section { grid-area: section;
+    padding: 15px;
     display: grid;
     grid-template-columns: auto auto auto 1fr auto;
     grid-template-rows: auto;
 }
 
-.content { grid-area: content; background-color: antiquewhite }
-.footer { grid-area: footer;  background-color: #222222}
+.content { grid-area: content;  }
+.footer { grid-area: footer; }
 
 .taskitem {
     display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: 1fr;
-    border-color: #336655;
-    border-style: solid;
+
     padding: 5px;
     margin: 10px;
+    background-color: bisque;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
 }
 
 .due {
@@ -43,13 +56,14 @@
 .priority {
     display: grid;
     grid-template-columns: 1fr auto;
-
 }
+
 
 
 textarea {
     outline: none;
     resize: none;
+    background-color: transparent;
 }
 
 
@@ -136,10 +150,56 @@ form {
     grid-template-columns: auto 1fr;
     grid-template-rows: auto;
     grid-gap: .5em;
+    grid-column-gap: 10px;
+    grid-row-gap: 15px;
+    padding: 10px;
+    margin: 15px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
 }
 
 .hiddeninput{
     display:none;
+}
+
+/* Common button styles */
+button {
+    float: left;
+    min-width: 50px;
+    max-width: 250px;
+    display: block;
+
+    padding: 1em 2em;
+
+    background: none;
+    color: inherit;
+    vertical-align: middle;
+    position: relative;
+    z-index: 1;
+}
+
+select {
+    float: left;
+    min-width: 50px;
+    max-width: 250px;
+    display: block;
+    border-radius: 0px;
+    padding: 1em 2em;
+
+    background: none;
+    color: inherit;
+    vertical-align: middle;
+    position: relative;
+    z-index: 1;
+}
+
+
+button:focus {
+    outline: none;
+}
+
+button > span {
+    vertical-align: middle;
 }
 
 
