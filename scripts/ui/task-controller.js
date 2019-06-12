@@ -1,10 +1,10 @@
 export class TaskController {
     constructor(taskService) {
         this.taskService = taskService;
-
+        this.themeSelector = document.getElementById("theme-select");
+        this.createTaskButton = document.getElementById("create-task-button");
         this.taskContainer = document.getElementById("task-container");
-        const templateSource = document.getElementById("entry-template").innerHTML;
-        this.taskTemplateCompiled = Handlebars.compile(templateSource)
+        this.taskTemplateCompiled = Handlebars.compile(document.getElementById("entry-template").innerHTML)
     }
 
     showTasks() {
@@ -12,7 +12,17 @@ export class TaskController {
     }
 
     initEventHandlers() {
+        this.themeSelector.addEventListener('change', (event) => {
+            document.documentElement.setAttribute('data-theme', this.themeSelector.value);
+        });
 
+        this.createTaskButton.addEventListener("click", (event) => {
+            window.location.replace("detail.html");
+        });
+
+        this.taskContainer.addEventListener("click", (event) => {
+            window.location.replace("detail.html?id=" + event.target.dataset.taskId);
+        });
     }
 
     renderTasksView() {

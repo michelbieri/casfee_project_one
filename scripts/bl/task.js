@@ -28,11 +28,11 @@ export class Task {
     }
 
     get dateDue() {
-        return this._dateDue.toDateString();
+        return this._dateDue;
     }
 
     get dateCreated() {
-        return this._dateCreated.toDateString();;
+        return this._dateCreated;
     }
 
     get completed() {
@@ -45,7 +45,7 @@ export class Task {
     }
 
     get dateCompleted() {
-        //return this._dateCompleted.toDateString();;
+        return this._dateCompleted;
     }
 
     toString () {
