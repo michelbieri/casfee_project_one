@@ -6,35 +6,42 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 </head>
 <body>
-<form>
-    <label for="title">Title</label>
-    <input type="text" id="title" name="title">
+<div id="task-detail-container" />
+<script id="task-detail-template" type="text/x-handlebars-template">
+    {{#with task}}
+    <form id="task-form" method="post">
+        <label for="title">Title</label>
+        <input type="text" id="title" value="{{title}}" name="title">
 
-    <label for="description">Description</label>
-    <textarea id="description" name="description"></textarea>
-    <label for="importance">Importance</label>
-    <div id="importance" name="importance" class="rating-system2">
-        <input type="radio" name='rate2' id="star5_2" class="hiddeninput" />
-        <label for="star5_2"></label>
-        <input type="radio" name='rate2' id="star4_2" class="hiddeninput"/>
-        <label for="star4_2"></label>
-        <input type="radio" name='rate2' id="star3_2" class="hiddeninput"/>
-        <label for="star3_2"></label>
-        <input type="radio" name='rate2' id="star2_2" class="hiddeninput"/>
-        <label for="star2_2"></label>
-        <input type="radio" name='rate2' id="star1_2" class="hiddeninput"/>
-        <label for="star1_2"></label>
-    </div>
+        <label for="description">Description</label>
+        <textarea id="description" name="description">{{description}}</textarea>
+        <label for="importance">Importance</label>
+        <div id="importance" name="priorityset" class="rating-system2">
+            <input type="radio" name='priority' id="star5_2" value="5" class="hiddeninput" {{checkedRadio this.priority 5}}/>
+            <label for="star5_2"></label>
+            <input type="radio" name='priority' id="star4_2" value="4" class="hiddeninput" {{checkedRadio this.priority 4}}/>
+            <label for="star4_2"></label>
+            <input type="radio" name='priority' id="star3_2" value="3" class="hiddeninput" {{checkedRadio this.priority 3}}/>
+            <label for="star3_2"></label>
+            <input type="radio" name='priority' id="star2_2" value="2" class="hiddeninput" {{checkedRadio this.priority 2}}/>
+            <label for="star2_2"></label>
+            <input type="radio" name='priority' id="star1_2" value="1" class="hiddeninput" {{checkedRadio this.priority 1}}/>
+            <label for="star1_2"></label>
+        </div>
 
-    <label for="dateDue">Date due</label>
-    <input type="date" id="dateDue" name="dateDue">
+        <label for="dateDue">Date due</label>
+        <input type="date" id="dateDue" name="dateDue" value={{dateDue}}>
 
-    <div>
-        <button type="submit">Senden</button>
-        <button type="submit">Zurcksetzen</button>
-    </div>
+        <div>
+            <button type="submit" form="task-form">Senden</button>
+            <button type="reset" form="task-form">Zurcksetzen</button>
+        </div>
+    </form>
+    {{/with}}
+</script>
 
-
-</form>
+<script src="scripts/handlebars-v4.1.2.js"></script>
+<script src="scripts/helpers.js"></script>
+<script src="scripts/task-detail-bootstrapper.js" type="module" defer></script>
 </body>
 </html>

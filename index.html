@@ -7,12 +7,12 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 </head>
 <body>
-<div class="container">
+<div id="content" class="container">
     <article>
         <header class="grid header">
-            <button type="button">Create new note</button>
+            <button type="button" id="create-task-button">Create new note</button>
             <div></div>
-            <select name="theme">
+            <select id="theme-select" name="theme">
                 <option value="light" selected>Light</option>
                 <option value="dark">Dark</option>
             </select>
@@ -55,7 +55,7 @@
                     </div>
                     <div class="description">
                         <textarea readonly rows="2">{{description}}</textarea>
-                        <button onclick="window.location.href = 'detail.html';">edit</button>
+                        <button data-task-id="{{id}}">edit</button>
                     </div>
                 </div>
             </div>

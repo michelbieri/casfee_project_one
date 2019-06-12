@@ -1,15 +1,14 @@
 import {TaskStorage} from "./dl/task-storage.js";
-import {TaskController} from "./ui/task-controller.js";
 import {TaskService} from "./bl/task-service.js";
+import {TaskDetailController} from "./ui/task-detail-controller.js";
 
-class Bootstrapper {
+class TaskDetailBootstrapper {
     static start() {
         const taskStorage = new TaskStorage();
         const taskService = new TaskService(taskStorage);
-        new TaskController(taskService).taskAction();
-
+        new TaskDetailController(taskService).taskDetailAction();
     }
 }
 
 // wait until scripts have been loaded
-document.addEventListener('DOMContentLoaded', Bootstrapper.start);
+document.addEventListener('DOMContentLoaded', TaskDetailBootstrapper.start);

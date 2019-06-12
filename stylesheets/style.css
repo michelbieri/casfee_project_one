@@ -1,4 +1,28 @@
 
+:root {
+    --primary-color: #302AE6;
+    --secondary-color: #95abf2;
+    --font-color: #424242;
+    --bg-color: #fff;
+    --heading-color: #292922;
+}
+
+[data-theme="dark"] {
+    --primary-color: #9A97F3;
+    --secondary-color: #818cab;
+    --font-color: #e1e1ff;
+    --bg-color: #161625;
+    --heading-color: #818cab;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    max-width: 90%;
+    margin: 0 auto;
+    font-size: calc(1rem + 0.25vh);
+}
+
 .container {
     display: grid;
     grid-template-columns: auto;
@@ -8,7 +32,7 @@
     grid-row-gap: 15px;
     border-radius: 4px;
     margin: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .grid {
@@ -38,7 +62,7 @@
 
     padding: 5px;
     margin: 10px;
-    background-color: bisque;
+    background-color: var(--secondary-color);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
 }
 
@@ -68,10 +92,7 @@ textarea {
 
 
 
-.rating-system1,
-.rating-system2,
-.rating-system3,
-.rating-system4{
+.rating-system2{
     width:auto;
     display:inline-block;
     margin:20px;
@@ -112,38 +133,7 @@ textarea {
 
 }
 
-/*rating system 3*/
 
-.rating-system3 label{
-    width:10px;
-    height:10px;
-    margin:0 10px;
-}
-.rating-system3 label:hover,
-.rating-system3 label:hover ~ label
-{
-    background:crimson;
-    border-radius:100%
-}
-
-.rating-system3 input:checked ~ label{
-    border-radius: 100%;
-    background: crimson;
-    box-shadow: 6px 0 crimson, 3px 1px 0 7px #222,3px 1px 0 9px crimson;
-
-}
-
-.rating-system3 input:checked ~ label:after{
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: crimson;
-    transform: rotate(-45deg);
-    border-bottom-left-radius: 15%;
-    top: 30%;
-    left: 3px;
-}
 
 form {
     display: grid;
@@ -155,7 +145,7 @@ form {
     padding: 10px;
     margin: 15px;
     border-radius: 4px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .hiddeninput{
