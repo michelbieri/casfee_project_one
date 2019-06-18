@@ -8,7 +8,7 @@ export class TaskService {
     }
 
     loadData() {
-        this.tasks = this.storage.getAll().map(t => new Task(t.id, t.title, t.description, t.priority, t.dateDue));
+        this.tasks = this.storage.getAll().map(t => new Task(t.id, t.title, t.description, t.priority, t.dateDue, t.completed, t.dateCompleted));
 
         if (this.tasks.length == 0) {
             this.task = new Task(this.tasks.length, "Sample Task", "Initial sample Task", 2, new Date());
@@ -30,12 +30,20 @@ export class TaskService {
     }
 
     saveTask(formTask) {
-        let foundIndex = this.tasks.findIndex(t => t.id == this.task.id);
+        const foundIndex = this.tasks.findIndex(t => t.id == this.task.id);
         if (foundIndex === -1) {
-            this.task = new Task(this.tasks.length, formTask.title, formTask.description, formTask.priority, formTask.dateDue);
+            this.task = new Task(this.tasks.length, formTask.title, formTask.description, formTask.priority, formTask.dateDue, false, null);
             this.tasks.push(this.task);
         } else {
-            this.tasks[foundIndex] = new Task(this.task.id, formTask.title, formTask.description, formTask.priority, formTask.dateDue);
+            this.tasks[foundIndex] = new Task(this.task.id, formTask.title, formTask.description, formTask.priority, formTask.dateDue, this.task.completed, this.task.dateCompleted);
+        }
+    }
+
+    completeTask(taskId) {
+        const foundIndex = this.tasks.findIndex(t => t.id == taskId);
+        if (foundIndex !== -1) {
+            this.tasks[foundIndex].completed = !this.tasks[foundIndex].completed;
+            this.saveData();
         }
     }
 

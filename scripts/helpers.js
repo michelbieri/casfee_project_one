@@ -1,7 +1,4 @@
-Handlebars.registerHelper("checkedIf", function (condition, value) {
-    return (condition == value) ? "checked" : "";
-});
 
-Handlebars.registerHelper('checkedRadio', function(obj, value){
+Handlebars.registerHelper('setChecked', function(obj, value){
     return obj == value ? ' checked' : '';
 });
