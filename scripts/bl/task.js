@@ -1,14 +1,14 @@
 export class Task {
 
-    constructor (id, title, description, priority, dateDue) {
+    constructor (id, title, description, priority, dateDue, completed, dateCompleted) {
         this._id = id;
         this._title = title;
         this._description = description;
         this._priority = priority;
         this._dateDue = dateDue;
         this._dateCreated = new Date();
-        this._completed = false;
-        this._dateCompleted = null;
+        this._completed = completed;
+        this._dateCompleted = dateCompleted;
     }
 
     get id() {
@@ -41,7 +41,12 @@ export class Task {
 
     set completed(value) {
         this._completed = value;
-        this._dateCompleted = new Date();
+        if (value === true) {
+            this._dateCompleted = new Date();
+        } else {
+            this._dateCompleted = null;
+        }
+
     }
 
     get dateCompleted() {

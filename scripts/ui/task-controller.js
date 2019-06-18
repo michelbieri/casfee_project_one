@@ -25,9 +25,15 @@ export class TaskController {
 
         this.taskContainer.addEventListener("click", (event) => {
             event.preventDefault();
-            if (event.target.dataset.taskId !== undefined) {
-                window.location.replace("detail.html?id=" + event.target.dataset.taskId);
+            const taskId = event.target.dataset.taskId;
+            if (taskId !== undefined) {
+                if (event.target.type === "button") {
+                    window.location.replace("detail.html?id=" + taskId);
+                } else if (event.target.type === "checkbox") {
+                    this.taskService.completeTask(taskId);
+                }
             }
+
         });
 
         this.sortGroup.addEventListener("click", (event) => {

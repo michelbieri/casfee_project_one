@@ -35,7 +35,7 @@
                 <div class="due">
                     {{dateDue}}
                     <div class="finished">
-                        <input type="checkbox" id="finished_{{this.id}}"  {{checkedIf this.finished}}/>
+                        <input type="checkbox" id="finished_{{this.id}}" data-task-id="{{id}}" {{setChecked this.completed true}}/>
                         <label for="finished_{{this.id}}">Finished</label>
                     </div>
                 </div>
@@ -43,15 +43,15 @@
                     <div class="priority">
                         {{title}}
                         <div class="rating-system2">
-                            <input type="radio" name=rate_5_{{this.id}} id=star5_{{this.id}} value="5" class="hiddeninput" {{checkedRadio this.priority 5}}/>
+                            <input type="radio" name=rate_5_{{this.id}} id=star5_{{this.id}} value="5" class="hiddeninput" {{setChecked this.priority 5}}/>
                             <label for="star5_{{this.id}}"></label>
-                            <input type="radio" name=rate_4_{{this.id}} id=star4_{{this.id}} value="4" class="hiddeninput" {{checkedRadio this.priority 4}}/>
+                            <input type="radio" name=rate_4_{{this.id}} id=star4_{{this.id}} value="4" class="hiddeninput" {{setChecked this.priority 4}}/>
                             <label for="star4_{{this.id}}"></label>
-                            <input type="radio" name=rate_3_{{this.id}} id=star3_{{this.id}} value="3" class="hiddeninput" {{checkedRadio this.priority 3}}/>
+                            <input type="radio" name=rate_3_{{this.id}} id=star3_{{this.id}} value="3" class="hiddeninput" {{setChecked this.priority 3}}/>
                             <label for="star3_{{this.id}}"></label>
-                            <input type="radio" name=rate_2_{{this.id}} id=star2_{{this.id}} value="2" class="hiddeninput" {{checkedRadio this.priority 2}}/>
+                            <input type="radio" name=rate_2_{{this.id}} id=star2_{{this.id}} value="2" class="hiddeninput" {{setChecked this.priority 2}}/>
                             <label for="star2_{{this.id}}"></label>
-                            <input type="radio" name=rate_1_{{this.id}} id=star1_{{this.id}} value="1" class="hiddeninput" {{checkedRadio this.priority 1}}/>
+                            <input type="radio" name=rate_1_{{this.id}} id=star1_{{this.id}} value="1" class="hiddeninput" {{setChecked this.priority 1}}/>
                             <label for="star1_{{this.id}}"></label>
                         </div>
                     </div>
