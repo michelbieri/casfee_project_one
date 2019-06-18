@@ -37,10 +37,22 @@ export class TaskService {
         } else {
             this.tasks[foundIndex] = new Task(this.task.id, formTask.title, formTask.description, formTask.priority, formTask.dateDue);
         }
-
     }
 
-    orderBy() {
-        //ToDo: Implement oder by
+    orderBy(value) {
+        switch (value) {
+            case 'dateDue':
+            case 'dateCompleted':
+            case 'dateCreated':
+                this.tasks = this.tasks.sort((a, b) => new Date(a[value]).getTime() - new Date(b[value]).getTime());
+                break;
+            case 'priority':
+                this.tasks = this.tasks.sort((a, b) => parseInt(b[value]) - parseInt(a[value]));
+                break;
+        }
+    }
+
+    filter() {
+        //ToDo: Implement completed filter
     }
 }
