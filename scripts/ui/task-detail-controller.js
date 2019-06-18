@@ -14,6 +14,7 @@ export class TaskDetailController {
             this.taskService.saveData();
             this.showIndexPage();
         });
+
         this.taskDetailContainer.addEventListener('reset', (event) => {
             this.showIndexPage();
         });
