@@ -10,11 +10,6 @@ export class TaskService {
     loadData() {
         this.tasks = this.storage.getAll().map(t => new Task(t.id, t.title, t.description, t.priority, t.dateDue, t.completed, t.dateCompleted));
 
-        if (this.tasks.length == 0) {
-            this.task = new Task(this.tasks.length, "Sample Task", "Initial sample Task", 2, new Date());
-            this.tasks.push(this.task);
-            this.saveData();
-        }
     }
 
     saveData() {
@@ -32,19 +27,23 @@ export class TaskService {
     saveTask(formTask) {
         const foundIndex = this.tasks.findIndex(t => t.id == this.task.id);
         if (foundIndex === -1) {
-            this.task = new Task(this.tasks.length, formTask.title, formTask.description, formTask.priority, formTask.dateDue, false, null);
+            this.task = new Task(this.tasks.length, formTask.title, formTask.description, formTask.priority, formTask.dateDue);
             this.tasks.push(this.task);
         } else {
             this.tasks[foundIndex] = new Task(this.task.id, formTask.title, formTask.description, formTask.priority, formTask.dateDue, this.task.completed, this.task.dateCompleted);
         }
+        this.saveData();
     }
 
     completeTask(taskId) {
+        this.loadData();
         const foundIndex = this.tasks.findIndex(t => t.id == taskId);
         if (foundIndex !== -1) {
             this.tasks[foundIndex].completed = !this.tasks[foundIndex].completed;
             this.saveData();
         }
+        this.filter('completed', false)
+
     }
 
     orderBy(value) {
@@ -52,7 +51,7 @@ export class TaskService {
             case 'dateDue':
             case 'dateCompleted':
             case 'dateCreated':
-                this.tasks = this.tasks.sort((a, b) => new Date(a[value]).getTime() - new Date(b[value]).getTime());
+                this.tasks = this.tasks.sort((a, b) => new Date(b[value]).getTime() - new Date(a[value]).getTime());
                 break;
             case 'priority':
                 this.tasks = this.tasks.sort((a, b) => parseInt(b[value]) - parseInt(a[value]));
@@ -60,7 +59,12 @@ export class TaskService {
         }
     }
 
-    filter() {
-        //ToDo: Implement completed filter
+    filter(value, condition) {
+        if (condition === true) {
+            this.loadData();
+        } else {
+            this.tasks = this.tasks.filter(t => t[value] == condition);
+        }
+
     }
 }

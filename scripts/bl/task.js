@@ -1,6 +1,6 @@
 export class Task {
 
-    constructor (id, title, description, priority, dateDue, completed, dateCompleted) {
+    constructor (id, title, description, priority, dateDue, completed=false, dateCompleted=null) {
         this._id = id;
         this._title = title;
         this._description = description;
@@ -51,14 +51,6 @@ export class Task {
 
     get dateCompleted() {
         return this._dateCompleted;
-    }
-
-    toString () {
-        return `${this.title} | ${this.description}g P :: ${this.priority}g C :: ${this.dateDue}g F`;
-    }
-
-    print () {
-        console.log( this.toString() );
     }
 
     toJSON() {

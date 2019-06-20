@@ -25,7 +25,9 @@
                 <button id="dateCompleted" class="filter-button">By finished date</button>
             </div>
             <div></div>
-            <button>Show finished</button>
+            <div id="filter-group">
+                <button id="completed" class="filter-button">Show finished</button>
+            </div>
         </section>
 
         <div id="task-container" class="grid content"></div>
@@ -57,7 +59,7 @@
                     </div>
                     <div class="description">
                         <textarea readonly rows="2">{{description}}</textarea>
-                        <button data-task-id="{{id}}">edit</button>
+                        <button type="button" data-task-id="{{id}}">edit</button>
                     </div>
                 </div>
             </div>

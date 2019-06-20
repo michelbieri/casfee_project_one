@@ -21,7 +21,7 @@ body {
     max-width: 90%;
     margin: 0 auto;
     font-size: calc(1rem + 0.25vh);
-    font-family: "Helvetica Neue";
+    font-family: "Helvetica";
 }
 
 .container {
@@ -177,7 +177,7 @@ select {
     min-width: 50px;
     max-width: 250px;
     display: block;
-    border-radius: 0px;
+    border-radius: 0;
     padding: 1em 2em;
 
     background: none;
