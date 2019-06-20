@@ -1,10 +1,13 @@
 export class TaskController {
-    constructor(taskService) {
+
+    constructor(taskService , taskFilterService) {
         this.taskService = taskService;
+        this.taskFilterService = taskFilterService;
         this.themeSelector = document.getElementById("theme-select");
         this.createTaskButton = document.getElementById("create-task-button");
         this.taskContainer = document.getElementById("task-container");
         this.sortGroup = document.getElementById("sort-group");
+        this.filterGroup = document.getElementById("filter-group");
         this.taskTemplateCompiled = Handlebars.compile(document.getElementById("entry-template").innerHTML)
     }
 
@@ -28,9 +31,10 @@ export class TaskController {
             const taskId = event.target.dataset.taskId;
             if (taskId !== undefined) {
                 if (event.target.type === "button") {
-                    window.location.replace("detail.html?id=" + taskId);
+                    window.location = "detail.html?id=" + taskId;
                 } else if (event.target.type === "checkbox") {
                     this.taskService.completeTask(taskId);
+                    this.renderTasksView();
                 }
             }
 
@@ -43,6 +47,25 @@ export class TaskController {
             this.taskService.orderBy(event.target.id);
             this.renderTasksView();
         });
+
+        this.filterGroup.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.target.classList.toggle('is-checked');
+            const showCompleted = event.target.classList.contains('is-checked');
+            this.taskService.filter(event.target.id, showCompleted);
+            this.taskFilterService.saveData(showCompleted);
+            this.renderTasksView();
+        });
+    }
+
+    loadTaskFilter() {
+        const showCompleted = this.taskFilterService.loadData();
+        const buttonShowCompleted = document.getElementById("completed");
+        this.taskService.filter('completed', showCompleted);
+        if ((showCompleted && !buttonShowCompleted.classList.contains('is-checked')) ||
+            (!showCompleted && buttonShowCompleted.classList.contains('is-checked'))) {
+            buttonShowCompleted.classList.toggle('is-checked');
+        }
     }
 
     renderTasksView() {
@@ -53,6 +76,7 @@ export class TaskController {
         this.initEventHandlers();
         this.taskService.loadData();
         this.taskService.orderBy('dateDue');
+        this.loadTaskFilter();
         this.renderTasksView();
     }
 }

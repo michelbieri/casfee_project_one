@@ -1,4 +1,4 @@
 
 Handlebars.registerHelper('setChecked', function(obj, value){
-    return obj == value ? ' checked' : '';
+    return obj == value ? 'checked' : '';
 });
