@@ -1,8 +1,9 @@
 export class TaskController {
 
-    constructor(taskService , taskFilterService) {
+    constructor(taskService , taskFilterService, themeService) {
         this.taskService = taskService;
         this.taskFilterService = taskFilterService;
+        this.themeService = themeService;
         this.themeSelector = document.getElementById("theme-select");
         this.createTaskButton = document.getElementById("create-task-button");
         this.taskContainer = document.getElementById("task-container");
@@ -19,6 +20,7 @@ export class TaskController {
         this.themeSelector.addEventListener('change', (event) => {
             event.preventDefault();
             document.documentElement.setAttribute('data-theme', this.themeSelector.value);
+            this.themeService.saveData(this.themeSelector.value);
         });
 
         this.createTaskButton.addEventListener("click", (event) => {
@@ -68,6 +70,12 @@ export class TaskController {
         }
     }
 
+    loadTheme() {
+        const theme = this.themeService.loadData();
+        this.themeSelector.value = theme;
+        document.documentElement.setAttribute('data-theme', theme);
+    }
+
     renderTasksView() {
         this.showTasks();
     }
@@ -77,6 +85,7 @@ export class TaskController {
         this.taskService.loadData();
         this.taskService.orderBy('dateDue');
         this.loadTaskFilter();
+        this.loadTheme();
         this.renderTasksView();
     }
 }
