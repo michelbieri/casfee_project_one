@@ -1,7 +1,7 @@
 export class TaskDetailController {
-    constructor(taskService) {
+    constructor(taskService, themeService) {
         this.taskService = taskService;
-
+        this.themeService = themeService;
         this.taskEditTemplateCompiled = Handlebars.compile(document.getElementById('task-detail-template').innerHTML);
         this.taskDetailContainer = document.getElementById('task-detail-container');
     }
@@ -42,9 +42,15 @@ export class TaskDetailController {
         window.location.replace("index.html");
     }
 
+    loadTheme() {
+        const theme = this.themeService.loadData();
+        document.documentElement.setAttribute('data-theme', theme);
+    }
+
     taskDetailAction() {
         this.initEventHandlers();
         this.initData();
+        this.loadTheme();
         this.renderEditTaskView();
     }
 
