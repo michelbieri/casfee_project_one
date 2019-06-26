@@ -37,29 +37,30 @@
                 <div class="due">
                     {{dateDue}}
                     <div class="finished">
-                        <input type="checkbox" id="finished_{{this.id}}" data-task-id="{{id}}" {{setChecked this.completed true}}/>
-                        <label for="finished_{{this.id}}">Finished</label>
+                        <input type="checkbox" id="finished_{{this._id}}" data-task-id="{{_id}}" {{setChecked this.completed true}}/>
+                        <label for="finished_{{this._id}}">Finished</label>
                     </div>
+                    {{dateCompletedFormatted}}
                 </div>
                 <div class="title">
                     <div class="priority">
                         {{title}}
                         <div class="rating-system2">
-                            <input type="radio" name=rate_5_{{this.id}} id=star5_{{this.id}} value="5" class="hiddeninput" {{setChecked this.priority 5}}/>
-                            <label for="star5_{{this.id}}"></label>
-                            <input type="radio" name=rate_4_{{this.id}} id=star4_{{this.id}} value="4" class="hiddeninput" {{setChecked this.priority 4}}/>
-                            <label for="star4_{{this.id}}"></label>
-                            <input type="radio" name=rate_3_{{this.id}} id=star3_{{this.id}} value="3" class="hiddeninput" {{setChecked this.priority 3}}/>
-                            <label for="star3_{{this.id}}"></label>
-                            <input type="radio" name=rate_2_{{this.id}} id=star2_{{this.id}} value="2" class="hiddeninput" {{setChecked this.priority 2}}/>
-                            <label for="star2_{{this.id}}"></label>
-                            <input type="radio" name=rate_1_{{this.id}} id=star1_{{this.id}} value="1" class="hiddeninput" {{setChecked this.priority 1}}/>
-                            <label for="star1_{{this.id}}"></label>
+                            <input type="radio" name=rate_5_{{this._id}} id=star5_{{this._id}} value="5" class="hiddeninput" {{setChecked this.priority 5}}/>
+                            <label for="star5_{{this._id}}"></label>
+                            <input type="radio" name=rate_4_{{this._id}} id=star4_{{this._id}} value="4" class="hiddeninput" {{setChecked this.priority 4}}/>
+                            <label for="star4_{{this._id}}"></label>
+                            <input type="radio" name=rate_3_{{this._id}} id=star3_{{this._id}} value="3" class="hiddeninput" {{setChecked this.priority 3}}/>
+                            <label for="star3_{{this._id}}"></label>
+                            <input type="radio" name=rate_2_{{this._id}} id=star2_{{this._id}} value="2" class="hiddeninput" {{setChecked this.priority 2}}/>
+                            <label for="star2_{{this._id}}"></label>
+                            <input type="radio" name=rate_1_{{this._id}} id=star1_{{this._id}} value="1" class="hiddeninput" {{setChecked this.priority 1}}/>
+                            <label for="star1_{{this._id}}"></label>
                         </div>
                     </div>
                     <div class="description">
                         <textarea readonly rows="2">{{description}}</textarea>
-                        <button type="button" data-task-id="{{id}}">edit</button>
+                        <button type="button" data-task-id="{{_id}}">edit</button>
                     </div>
                 </div>
             </div>
@@ -71,6 +72,7 @@
 
 <script src="scripts/handlebars-v4.1.2.js"></script>
 <script src="scripts/helpers.js"></script>
+<script src="scripts/moment.js"></script>
 <script src="scripts/bootstrapper.js" type="module" defer></script>
 </body>
 </html>
