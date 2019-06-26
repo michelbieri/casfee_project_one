@@ -12,7 +12,7 @@ export class TaskController {
         this.taskTemplateCompiled = Handlebars.compile(document.getElementById("entry-template").innerHTML)
     }
 
-    showTasks() {
+    renderTasks() {
         this.taskContainer.innerHTML = this.taskTemplateCompiled({task: this.taskService.tasks});
     }
 
@@ -36,7 +36,7 @@ export class TaskController {
                     window.location = "detail.html?id=" + taskId;
                 } else if (event.target.type === "checkbox") {
                     this.taskService.completeTask(taskId);
-                    this.renderTasksView();
+                    this.loadTaskFilter();
                 }
             }
 
@@ -47,28 +47,34 @@ export class TaskController {
             this.sortGroup.querySelector('.is-checked').classList.remove('is-checked');
             event.target.classList.add('is-checked');
             this.taskService.orderBy(event.target.id);
-            this.renderTasksView();
+            this.renderTasks();
         });
 
         this.filterGroup.addEventListener("click", (event) => {
             event.preventDefault();
             event.target.classList.toggle('is-checked');
             const showCompleted = event.target.classList.contains('is-checked');
-            this.taskService.filter(event.target.id, showCompleted);
-            this.taskFilterService.saveData(showCompleted);
-            this.renderTasksView();
+            this.filterTasks(event.target.id, showCompleted);
         });
+    }
+
+    filterTasks(value, condition) {
+        const buttonShowCompleted = document.getElementById("completed");
+        this.taskService.filter(value, condition);
+        this.taskFilterService.saveData(condition);
+        const checked = 'is-checked';
+        if ((condition && !buttonShowCompleted.classList.contains(checked)) ||
+            (!condition && buttonShowCompleted.classList.contains(checked))) {
+            buttonShowCompleted.classList.toggle(checked);
+        }
+        this.renderTasks();
     }
 
     loadTaskFilter() {
         const showCompleted = this.taskFilterService.loadData();
-        const buttonShowCompleted = document.getElementById("completed");
-        this.taskService.filter('completed', showCompleted);
-        if ((showCompleted && !buttonShowCompleted.classList.contains('is-checked')) ||
-            (!showCompleted && buttonShowCompleted.classList.contains('is-checked'))) {
-            buttonShowCompleted.classList.toggle('is-checked');
-        }
+        this.filterTasks('completed', showCompleted);
     }
+
 
     loadTheme() {
         const theme = this.themeService.loadData();
@@ -76,16 +82,13 @@ export class TaskController {
         document.documentElement.setAttribute('data-theme', theme);
     }
 
-    renderTasksView() {
-        this.showTasks();
-    }
 
-    taskAction() {
+    async taskAction() {
         this.initEventHandlers();
-        this.taskService.loadData();
-        this.taskService.orderBy('dateDue');
+        await this.taskService.loadData();
+        await this.taskService.orderBy('dateDue');
         this.loadTaskFilter();
         this.loadTheme();
-        this.renderTasksView();
+        this.renderTasks();
     }
 }

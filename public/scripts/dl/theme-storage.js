@@ -1,3 +1,4 @@
+//const key = "themeStorage";
 export class ThemeStorage {
     constructor() {
         const theme = JSON.parse(localStorage.getItem('themeStorage') || null );

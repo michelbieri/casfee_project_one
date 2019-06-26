@@ -11,7 +11,8 @@ export class TaskDetailController {
             event.preventDefault();
             let taskObject = Object.fromEntries(new FormData(event.target));
             this.taskService.saveTask(taskObject);
-            this.taskService.saveData();
+            //this.taskService.save
+            //this.taskService.saveData();
             this.showIndexPage();
         });
 
@@ -28,11 +29,12 @@ export class TaskDetailController {
         this.showTask();
     }
 
-    initData(){
-        this.taskService.loadData();
+    async initData(){
+        //this.taskService.loadData();
         const urlParam = window.location.search.substr(1);
         if(urlParam){
-            this.taskService.getTask(Number(urlParam.split("=")[1]));
+            await this.taskService.getTask(urlParam.split("=")[1]);
+            console.log(this.taskService.task);
         } else {
             this.taskService.initNewTask();
         }
@@ -47,10 +49,10 @@ export class TaskDetailController {
         document.documentElement.setAttribute('data-theme', theme);
     }
 
-    taskDetailAction() {
+    async taskDetailAction() {
         this.initEventHandlers();
-        this.initData();
         this.loadTheme();
+        await this.initData();
         this.renderEditTaskView();
     }
 

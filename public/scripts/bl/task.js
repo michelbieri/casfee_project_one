@@ -53,9 +53,16 @@ export class Task {
         return this._dateCompleted;
     }
 
+    get dateCompletedFormatted() {
+        if (this._dateCompleted) {
+            return moment(this._dateCompleted).fromNow();
+        }
+
+    }
+
+
     toJSON() {
         return {
-            id: this.id,
             title: this.title,
             description: this.description,
             priority: this.priority,
