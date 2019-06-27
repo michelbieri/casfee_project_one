@@ -50,17 +50,17 @@ export class TaskController {
             this.renderTasks();
         });
 
-        this.filterGroup.addEventListener("click", (event) => {
+        this.filterGroup.addEventListener("click", async (event) =>  {
             event.preventDefault();
             event.target.classList.toggle('is-checked');
             const showCompleted = event.target.classList.contains('is-checked');
-            this.filterTasks(event.target.id, showCompleted);
+            await this.filterTasks(event.target.id, showCompleted);
         });
     }
 
-    filterTasks(value, condition) {
+    async filterTasks(value, condition) {
         const buttonShowCompleted = document.getElementById("completed");
-        this.taskService.filter(value, condition);
+        await this.taskService.filter(value, condition);
         this.taskFilterService.saveData(condition);
         const checked = 'is-checked';
         if ((condition && !buttonShowCompleted.classList.contains(checked)) ||

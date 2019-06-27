@@ -17,7 +17,8 @@ export class TaskStore {
             request.body.dateDue,
             request.body.dateCreated,
             request.body.completed,
-            request.body.dateCompleted
+            request.body.dateCompleted,
+            request.body._id
             );
         return await this.database.insert(task);
     }
