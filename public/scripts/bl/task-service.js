@@ -55,10 +55,12 @@ export class TaskService {
         }
     }
 
-    filter(value, condition) {
-        // this.loadData();
+    async filter(value, condition) {
+
         if (condition === false) {
             this.tasks = this.tasks.filter(t => t[value] == condition);
+        } else {
+            await this.loadData();
         }
 
     }

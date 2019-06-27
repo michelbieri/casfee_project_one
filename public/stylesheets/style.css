@@ -88,22 +88,24 @@ body {
 
 
 
-textarea {
+textarea, input {
     outline: none;
     resize: none;
+    border-color: var(--font-color);
     background-color: transparent;
+    color: var(--font-color);
 }
 
 
 
-.rating-system2{
+.priority-system{
     width:auto;
     display:inline-block;
     margin:20px;
     position: relative;
 }
 
-.rating-system2 label{
+.priority-system label{
     float:right;
     display:inline-block;
     width:20px;
@@ -115,23 +117,23 @@ textarea {
 }
 
 /*second*/
-.rating-system2 label{
+.priority-system label{
     width:10px;
     height:10px;
     border-radius:100%;
     margin:0 10px;
 }
 
-.ratings-system2 label:before{display:none;}
-.rating-system2 label:hover ~ label,
-.rating-system2 label:hover
+.priority-system label:before{display:none;}
+.priority-system label:hover ~ label,
+.priority-system label:hover
 {
     box-shadow: 0 0 0 2px gold,
     inset 0 0 0 5px #333;
 
 }
 
-.rating-system2 input:checked ~ label{
+.priority-system input:checked ~ label{
     background:gold;
     box-shadow: 0 0 0 2px gold;
 

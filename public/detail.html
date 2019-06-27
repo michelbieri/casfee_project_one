@@ -16,18 +16,17 @@
         <label for="description">Description</label>
         <textarea id="description" name="description">{{description}}</textarea>
         <label for="importance">Importance</label>
-        <div id="importance" name="priorityset" class="rating-system2">
-            <input type="radio" name='priority' id="star5_2" value="5" class="hiddeninput" {{setChecked this.priority 5}}/>
-            <label for="star5_2"></label>
-            <input type="radio" name='priority' id="star4_2" value="4" class="hiddeninput" {{setChecked this.priority 4}}/>
-            <label for="star4_2"></label>
-            <input type="radio" name='priority' id="star3_2" value="3" class="hiddeninput" {{setChecked this.priority 3}}/>
-            <label for="star3_2"></label>
-            <input type="radio" name='priority' id="star2_2" value="2" class="hiddeninput" {{setChecked this.priority 2}}/>
-            <label for="star2_2"></label>
-            <input type="radio" name='priority' id="star1_2" value="1" class="hiddeninput" {{setChecked this.priority 1}}/>
-            <input type="radio" name='priority' id="star1_2" value="1" class="hiddeninput" {{setChecked this.priority 1}}/>
-            <label for="star1_2"></label>
+        <div id="importance" name="priorityset" class="priority-system">
+            <input type="radio" name='priority' id="prio5" value="5" class="hiddeninput" {{setChecked this.priority 5}}/>
+            <label for="prio5"></label>
+            <input type="radio" name='priority' id="prio4" value="4" class="hiddeninput" {{setChecked this.priority 4}}/>
+            <label for="prio4"></label>
+            <input type="radio" name='priority' id="prio3" value="3" class="hiddeninput" {{setChecked this.priority 3}}/>
+            <label for="prio3"></label>
+            <input type="radio" name='priority' id="prio2" value="2" class="hiddeninput" {{setChecked this.priority 2}}/>
+            <label for="prio2"></label>
+            <input type="radio" name='priority' id="prio1" value="1" class="hiddeninput" {{setChecked this.priority 1}}/>
+            <label for="prio1"></label>
         </div>
 
         <label for="dateDue">Date due</label>
