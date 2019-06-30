@@ -56,8 +56,7 @@ body {
     display: grid;
     grid-template-columns: 30% auto;
     grid-template-rows: 1fr;
-    padding: 2px;
-    margin: 0px 0px 5px 0px;
+    margin: 0 0 5px 0;
     background-color: transparent;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -195,12 +194,9 @@ button > span {
     vertical-align: middle;
 }
 
-.filter-button:active,
-.filter-button.is-checked {
+button:active,
+button.is-checked {
     background-color: var(--primary-color);
-}
-
-.filter-button.is-checked {
     color: white;
     text-shadow: 0 -1px hsla(0, 0%, 0%, 0.8);
 }
@@ -259,7 +255,7 @@ textarea, input {
 }
 
 .checkbox-container:hover input ~ .checkmark {
-    background-color: #ccc;
+    background-color: var(--primary-color);
     border-radius: 5px;
 }
 
