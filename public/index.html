@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Note pro</title>
+    <title>NoPro One</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 </head>
 <body>
@@ -20,7 +20,7 @@
 
         <section class="grid section">
             <div id="sort-group" class="button-group filters-button-group">
-                <button id="dateDue" class="filter-button  is-checked">By due date</button>
+                <button id="dateDue" class="filter-button">By due date</button>
                 <button id="priority" class="filter-button">By importance</button>
                 <button id="dateCompleted" class="filter-button">By finished date</button>
             </div>
@@ -34,13 +34,12 @@
         <script id="entry-template" type="text/x-handlebars-template">
             {{#each task}}
             <div class="grid taskitem">
-                <div class="due">
-                    {{dateDue}}
-                    <div class="finished">
-                        <input type="checkbox" id="finished_{{this._id}}" data-task-id="{{_id}}" {{setChecked this.completed true}}/>
-                        <label for="finished_{{this._id}}">Finished</label>
-                    </div>
-                    {{dateCompletedFormatted}}
+                <div class="due" >
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="finished_{{this._id}}" data-task-id="{{_id}}" {{setChecked this.completed true}}>
+                        <span class="checkmark" id="checkbox" data-task-id="{{_id}}"></span>
+                    </label>
+                    {{showDueOrCompleted this}}
                 </div>
                 <div class="title">
                     <div class="priority">
@@ -59,14 +58,24 @@
                         </div>
                     </div>
                     <div class="description">
-                        <textarea readonly rows="2">{{description}}</textarea>
+                        <div class="expandable-paragraph">
+                            <span class="text-class truncate">{{description}}</span>
+                        </div>
+                        <button type="button" class="edit" data-task-id="{{_id}}">edit</button>
+                    </div>
+
+
+                    <!--
+                    <div class="description">
+                        <span>{{description}}</span>
+
                         <button type="button" data-task-id="{{_id}}">edit</button>
                     </div>
+                    -->
                 </div>
             </div>
             {{/each}}
         </script>
-        <div class="grid footer"></div>
     </article>
 </div>
 

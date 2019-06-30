@@ -34,7 +34,7 @@ export class TaskController {
             if (taskId !== undefined) {
                 if (event.target.type === "button") {
                     window.location = "detail.html?id=" + taskId;
-                } else if (event.target.type === "checkbox") {
+                } else if (event.target.id === "checkbox") {
                     this.taskService.completeTask(taskId);
                     this.loadTaskFilter();
                 }
@@ -44,7 +44,9 @@ export class TaskController {
 
         this.sortGroup.addEventListener("click", (event) => {
             event.preventDefault();
-            this.sortGroup.querySelector('.is-checked').classList.remove('is-checked');
+            if (this.sortGroup.querySelector('.is-checked')) {
+                this.sortGroup.querySelector('.is-checked').classList.remove('is-checked');
+            }
             event.target.classList.add('is-checked');
             this.taskService.orderBy(event.target.id);
             this.renderTasks();
