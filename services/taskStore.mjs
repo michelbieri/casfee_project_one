@@ -30,5 +30,4 @@ export class TaskStore {
     async loadTaskById(id) {
         return await this.database.findOne({ _id: id });
     }
-
 }

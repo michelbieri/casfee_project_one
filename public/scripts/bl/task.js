@@ -1,5 +1,4 @@
 export class Task {
-
     constructor (id, title, description, priority=0, dateDue, completed=false, dateCompleted=null) {
         this._id = id;
         this._title = title;
@@ -46,7 +45,6 @@ export class Task {
         } else {
             this._dateCompleted = null;
         }
-
     }
 
     get dateCompleted() {
@@ -59,14 +57,12 @@ export class Task {
         } else {
             return 'sometime';
         }
-
     }
 
     get dateCompletedFormatted() {
         if (this._dateCompleted) {
             return moment(this._dateCompleted).fromNow();
         }
-
     }
 
     toJSON() {

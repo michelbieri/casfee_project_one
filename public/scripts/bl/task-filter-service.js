@@ -1,4 +1,3 @@
-
 export class TaskFilterService {
     constructor(taskFilterStorage) {
         this.storage = taskFilterStorage;
