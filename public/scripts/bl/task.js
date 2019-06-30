@@ -1,6 +1,6 @@
 export class Task {
 
-    constructor (id, title, description, priority, dateDue, completed=false, dateCompleted=null) {
+    constructor (id, title, description, priority=0, dateDue, completed=false, dateCompleted=null) {
         this._id = id;
         this._title = title;
         this._description = description;
@@ -53,13 +53,21 @@ export class Task {
         return this._dateCompleted;
     }
 
+    get dateDueFormatted() {
+        if (this._dateDue) {
+            return moment(this._dateDue).format('DD.MM.YYYY');
+        } else {
+            return 'sometime';
+        }
+
+    }
+
     get dateCompletedFormatted() {
         if (this._dateCompleted) {
             return moment(this._dateCompleted).fromNow();
         }
 
     }
-
 
     toJSON() {
         return {

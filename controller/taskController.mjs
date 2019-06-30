@@ -1,12 +1,11 @@
 export class TaskController {
     constructor(taskStore) {
         this.taskStore = taskStore;
-    };
+    }
 
     async getAllTasks(req, res) {
         res.json(await this.taskStore.loadAll());
-    };
-
+    }
 
     async saveTask(req, res) {
         res.json(await this.taskStore.saveTask(req));

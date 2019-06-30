@@ -1,7 +1,9 @@
-//const key = "themeStorage";
 export class ThemeStorage {
     constructor() {
-        const theme = JSON.parse(localStorage.getItem('themeStorage') || null );
+        let theme = JSON.parse(localStorage.getItem('themeStorage'));
+        if (theme === null) {
+            theme = 'light';
+        }
         this.theme = theme;
         localStorage.setItem('themeStorage', JSON.stringify(theme));
     }

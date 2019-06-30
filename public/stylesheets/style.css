@@ -1,6 +1,6 @@
 
 :root {
-    --primary-color: #302AE6;
+    --primary-color: #1959f4;
     --secondary-color: #e3e3e4;
     --font-color: #424242;
     --bg-color: #fff;
@@ -8,7 +8,7 @@
 }
 
 [data-theme="dark"] {
-    --primary-color: #9A97F3;
+    --primary-color: #eb4b80;
     --secondary-color: #333a44;
     --font-color: #e1e1ff;
     --bg-color: #202224;
@@ -28,16 +28,16 @@ body {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto 1fr auto auto;
-    grid-template-areas: "header" "section" "content" "footer";
-    grid-column-gap: 10px;
-    grid-row-gap: 15px;
-    border-radius: 4px;
-    margin: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    grid-template-areas: "header" "section" "content";
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    border-radius: 5px;
+    margin: 5px;
+    box-shadow: 0 4px 8px 0 rgba(72, 72, 74, 0.2);
 }
 
 .grid {
-    padding: 15px;
+    padding: 10px;
     font-size: 1rem;
 }
 
@@ -47,55 +47,63 @@ body {
 }
 
 .section { grid-area: section;
-    padding: 15px;
     display: grid;
     grid-template-columns: auto 1fr auto;
     grid-template-rows: auto;
 }
 
 .content { grid-area: content;  }
-.footer {
-    grid-area: footer;
-    grid-template-rows: auto;
-}
 
 .taskitem {
     display: grid;
     grid-template-columns: 30% auto;
     grid-template-rows: 1fr;
-
-    padding: 5px;
-    margin: 10px;
-    background-color: var(--secondary-color);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+    padding: 2px;
+    margin: 0px 0px 5px 0px;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .due {
     display: grid;
     grid-template-columns: auto;
+    grid-template-rows: 1fr;
 }
 
 .description {
     display: grid;
     grid-template-columns: 1fr auto;
+}
 
+.expandable-paragraph {
+    padding: 5px 5px;
+    width: 1fr;
+    font-size: 14px;
+}
+
+.truncate {
+    display: block;
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all .2s;
+    white-space: nowrap;
+
+}
+
+.expandable-paragraph :hover {
+    white-space: normal;
 }
 
 .priority {
     display: grid;
     grid-template-columns: 1fr auto;
+    grid-template-rows: 40px;
+    align-self: center;
+    font-style: bold;
 }
-
-
-
-textarea, input {
-    outline: none;
-    resize: none;
-    border-color: var(--font-color);
-    background-color: transparent;
-    color: var(--font-color);
-}
-
 
 
 .priority-system{
@@ -128,18 +136,16 @@ textarea, input {
 .priority-system label:hover ~ label,
 .priority-system label:hover
 {
-    box-shadow: 0 0 0 2px gold,
+    box-shadow: 0 0 0 2px var(--primary-color),
     inset 0 0 0 5px #333;
 
 }
 
 .priority-system input:checked ~ label{
-    background:gold;
-    box-shadow: 0 0 0 2px gold;
+    background:var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-color);
 
 }
-
-
 
 form {
     display: grid;
@@ -172,7 +178,10 @@ button {
     vertical-align: middle;
     position: relative;
     z-index: 1;
+    border-radius: 5px;
 }
+
+
 
 select {
     float: left;
@@ -200,7 +209,7 @@ button > span {
 
 .filter-button:active,
 .filter-button.is-checked {
-    background-color: #28F;
+    background-color: var(--primary-color);
 }
 
 .filter-button.is-checked {
@@ -213,7 +222,6 @@ button > span {
 }
 
 /* ---- button-group ---- */
-
 .button-group:after {
     content: '';
     display: block;
@@ -222,14 +230,81 @@ button > span {
 
 .button-group .filter-button {
     float: left;
-    border-radius: 0;
     margin-left: 0;
 }
 
+textarea, input {
+    resize: none;
+}
 
+/* Customize the label (the container) */
+.checkbox-container {
+    display: block;
+    position: relative;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+    font-size: 22px;
+    border-radius: 5px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
 
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    border-radius: 5px;
+    background-color: #eee;
+}
 
+/* On mouse-over, add a grey background color */
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #ccc;
+    border-radius: 5px;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkmark {
+    background-color: var(--primary-color);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
 
 
 
