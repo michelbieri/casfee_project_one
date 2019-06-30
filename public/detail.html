@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 </head>
 <body>
-<div id="task-detail-container" />
+<div id="task-detail-container"></div>
 <script id="task-detail-template" type="text/x-handlebars-template">
     {{#with task}}
     <form id="task-form" method="post">
@@ -16,7 +16,7 @@
         <label for="description">Description</label>
         <textarea id="description" name="description">{{description}}</textarea>
         <label for="importance">Importance</label>
-        <div id="importance" name="priorityset" class="priority-system">
+        <div id="importance" class="priority-system">
             <input type="radio" name='priority' id="prio5" value="5" class="hiddeninput" {{setChecked this.priority 5}}/>
             <label for="prio5"></label>
             <input type="radio" name='priority' id="prio4" value="4" class="hiddeninput" {{setChecked this.priority 4}}/>
