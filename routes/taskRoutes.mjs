@@ -1,5 +1,3 @@
-import express from 'express';
-
 export class TaskRoutes {
     constructor(app, taskController) {
         this.taskController = taskController;

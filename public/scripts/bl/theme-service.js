@@ -1,4 +1,3 @@
-
 export class ThemeService {
     constructor(themeStorage) {
         this.storage = themeStorage;
@@ -14,5 +13,4 @@ export class ThemeService {
         this.theme = theme;
         this.storage.update(this.theme);
     }
-
 }

@@ -39,7 +39,6 @@ export class TaskService {
             this.task.completed = !this.task.completed;
             await this.saveTask(this.task);
         }
-
     }
 
     orderBy(value) {
@@ -56,12 +55,10 @@ export class TaskService {
     }
 
     async filter(value, condition) {
-
         if (condition === false) {
             this.tasks = this.tasks.filter(t => t[value] == condition);
         } else {
             await this.loadData();
         }
-
     }
 }

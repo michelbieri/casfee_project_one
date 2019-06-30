@@ -16,6 +16,4 @@ export class TaskFilterStorage {
         this.taskFilter = taskFilter;
         return this.taskFilter;
     }
-
-
 }

@@ -1,5 +1,4 @@
 export class TaskController {
-
     constructor(taskService , taskFilterService, themeService) {
         this.taskService = taskService;
         this.taskFilterService = taskFilterService;
@@ -39,7 +38,6 @@ export class TaskController {
                     this.loadTaskFilter();
                 }
             }
-
         });
 
         this.sortGroup.addEventListener("click", (event) => {
@@ -83,7 +81,6 @@ export class TaskController {
         this.themeSelector.value = theme;
         document.documentElement.setAttribute('data-theme', theme);
     }
-
 
     async taskAction() {
         this.initEventHandlers();

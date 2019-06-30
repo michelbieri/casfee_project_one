@@ -11,8 +11,6 @@ export class TaskDetailController {
             event.preventDefault();
             let taskObject = Object.fromEntries(new FormData(event.target));
             this.taskService.saveTask(taskObject);
-            //this.taskService.save
-            //this.taskService.saveData();
             this.showIndexPage();
         });
 
@@ -30,7 +28,6 @@ export class TaskDetailController {
     }
 
     async initData(){
-        //this.taskService.loadData();
         const urlParam = window.location.search.substr(1);
         if(urlParam){
             await this.taskService.getTask(urlParam.split("=")[1]);
@@ -40,7 +37,7 @@ export class TaskDetailController {
         }
     }
 
-    showIndexPage(event){
+    showIndexPage(){
         window.location.replace("index.html");
     }
 
@@ -55,5 +52,4 @@ export class TaskDetailController {
         await this.initData();
         this.renderEditTaskView();
     }
-
 }
