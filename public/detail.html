@@ -12,7 +12,6 @@
     <form id="task-form" method="post">
         <label for="title">Title</label>
         <input type="text" id="title" value="{{title}}" name="title">
-
         <label for="description">Description</label>
         <textarea id="description" name="description">{{description}}</textarea>
         <label for="importance">Importance</label>
@@ -28,10 +27,8 @@
             <input type="radio" name='priority' id="prio1" value="1" class="hiddeninput" {{setChecked this.priority 1}}/>
             <label for="prio1"></label>
         </div>
-
         <label for="dateDue">Date due</label>
-        <input type="date" id="dateDue" name="dateDue" value={{dateDue}}>
-
+        <input type="date" id="dateDue" required name="dateDue" value={{dateDue}}>
         <div>
             <button type="submit" form="task-form">Save</button>
             <button type="reset" form="task-form">Cancel</button>
