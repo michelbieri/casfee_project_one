@@ -3,12 +3,12 @@ export class TaskController {
         this.taskService = taskService;
         this.taskFilterService = taskFilterService;
         this.themeService = themeService;
-        this.themeSelector = document.getElementById("theme-select");
-        this.createTaskButton = document.getElementById("create-task-button");
-        this.taskContainer = document.getElementById("task-container");
-        this.sortGroup = document.getElementById("sort-group");
-        this.filterGroup = document.getElementById("filter-group");
-        this.taskTemplateCompiled = Handlebars.compile(document.getElementById("entry-template").innerHTML)
+        this.themeSelector = document.getElementById('theme-select');
+        this.createTaskButton = document.getElementById('create-task-button');
+        this.taskContainer = document.getElementById('task-container');
+        this.sortGroup = document.getElementById('sort-group');
+        this.filterGroup = document.getElementById('filter-group');
+        this.taskTemplateCompiled = Handlebars.compile(document.getElementById('entry-template').innerHTML)
     }
 
     renderTasks() {
@@ -24,16 +24,16 @@ export class TaskController {
 
         this.createTaskButton.addEventListener("click", (event) => {
             event.preventDefault();
-            window.location.replace("detail.html");
+            window.location.replace('detail.html');
         });
 
         this.taskContainer.addEventListener("click", (event) => {
             event.preventDefault();
             const taskId = event.target.dataset.taskId;
             if (taskId !== undefined) {
-                if (event.target.type === "button") {
-                    window.location = "detail.html?id=" + taskId;
-                } else if (event.target.id === "checkbox") {
+                if (event.target.type === 'button') {
+                    window.location = 'detail.html?id=' + taskId;
+                } else if (event.target.id === 'checkbox') {
                     this.taskService.completeTask(taskId);
                     this.loadTaskFilter();
                 }
@@ -59,7 +59,7 @@ export class TaskController {
     }
 
     async filterTasks(value, condition) {
-        const buttonShowCompleted = document.getElementById("completed");
+        const buttonShowCompleted = document.getElementById('completed');
         await this.taskService.filter(value, condition);
         this.taskFilterService.saveData(condition);
         const checked = 'is-checked';

@@ -17,10 +17,9 @@
                 <option value="dark">Dark</option>
             </select>
         </header>
-
         <section class="grid section">
             <div id="sort-group" class="button-group filters-button-group">
-                <button id="dateDue" class="filter-button">By due date</button>
+                <button id="dateDue" class="filter-button is-checked">By due date</button>
                 <button id="priority" class="filter-button">By importance</button>
                 <button id="dateCompleted" class="filter-button">By finished date</button>
             </div>
@@ -29,7 +28,6 @@
                 <button id="completed" class="filter-button">Show finished</button>
             </div>
         </section>
-
         <div id="task-container" class="grid content"></div>
         <script id="entry-template" type="text/x-handlebars-template">
             {{#each task}}
