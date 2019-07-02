@@ -9,12 +9,12 @@ export class TaskService {
     }
 
     async loadData() {
-        const data = await httpService.ajax("GET", this.url, undefined);
+        const data = await httpService.ajax('GET', this.url, undefined);
         this.tasks = data.map(t => new Task(t._id, t.title, t.description, t.priority, t.dateDue, t.completed, t.dateCompleted));
     }
 
     async getTask(id) {
-        this.task = await httpService.ajax("GET", `${this.url}/${id}`, undefined);
+        this.task = await httpService.ajax('GET', `${this.url}/${id}`, undefined);
     }
 
     initNewTask() {
@@ -25,10 +25,10 @@ export class TaskService {
         if (this.task._id == null) {
             this.task = new Task(this.tasks.length, formTask.title, formTask.description, formTask.priority, formTask.dateDue);
             this.tasks.push(this.task);
-            await httpService.ajax("POST", this.url, this.task);
+            await httpService.ajax('POST', this.url, this.task);
         } else {
             this.task = new Task(this.task._id, formTask.title, formTask.description, formTask.priority, formTask.dateDue, this.task.completed, this.task.dateCompleted);
-            await httpService.ajax("PUT", `${this.url}/${this.task._id}`, this.task);
+            await httpService.ajax('PUT', `${this.url}/${this.task._id}`, this.task);
         }
     }
 

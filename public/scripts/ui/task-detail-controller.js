@@ -38,7 +38,7 @@ export class TaskDetailController {
     }
 
     showIndexPage(){
-        window.location.replace("index.html");
+        window.location.replace('index.html');
     }
 
     loadTheme() {

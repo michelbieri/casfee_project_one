@@ -22,12 +22,12 @@ export class TaskController {
             this.themeService.saveData(this.themeSelector.value);
         });
 
-        this.createTaskButton.addEventListener("click", (event) => {
+        this.createTaskButton.addEventListener('click', (event) => {
             event.preventDefault();
             window.location.replace('detail.html');
         });
 
-        this.taskContainer.addEventListener("click", (event) => {
+        this.taskContainer.addEventListener('click', (event) => {
             event.preventDefault();
             const taskId = event.target.dataset.taskId;
             if (taskId !== undefined) {
@@ -40,7 +40,7 @@ export class TaskController {
             }
         });
 
-        this.sortGroup.addEventListener("click", (event) => {
+        this.sortGroup.addEventListener('click', (event) => {
             event.preventDefault();
             if (this.sortGroup.querySelector('.is-checked')) {
                 this.sortGroup.querySelector('.is-checked').classList.remove('is-checked');

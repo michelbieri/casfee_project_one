@@ -13,5 +13,4 @@ export class TaskFilterService {
         this.showCompletedTasks = showCompletedTasks;
         this.storage.update(this.showCompletedTasks);
     }
-
 }

@@ -1,4 +1,4 @@
-import {Task} from "../model/taskModel.mjs";
+import {Task} from '../model/taskModel.mjs';
 
 export class TaskStore {
     constructor(database) {

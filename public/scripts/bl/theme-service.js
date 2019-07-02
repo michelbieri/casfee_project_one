@@ -1,7 +1,7 @@
 export class ThemeService {
     constructor(themeStorage) {
         this.storage = themeStorage;
-        this.theme = "light";
+        this.theme = 'light';
     }
 
     loadData() {
